@@ -1,0 +1,20 @@
+@relation training
+
+@attribute 'a1' numeric
+@attribute 'a2' numeric
+@attribute 'a3' numeric
+@attribute 'a4' numeric
+@attribute 'a5' numeric
+@attribute quality {good,bad}
+
+@data
+1,0,0,0,1,good
+1,0,0,1,0,good
+1,1,0,1,1,good
+1,1,1,0,0,good
+1,1,1,0,1,good
+1,1,0,0,0,bad
+1,1,0,0,1,bad
+1,1,0,1,0,bad
+0,0,0,1,1,bad
+0,0,1,0,0,bad

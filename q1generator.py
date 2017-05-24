@@ -19,16 +19,16 @@ def q1_gen():
         for n in range(999):
             s = "@attribute 'a%d' numeric" %(n+1)
             # datwriter.writerow(["@attribute 'a%d' numeric"]) %n
-            datwriter.writerow([s]) 
+            datwriter.writerow([s])
             n += 1
-        
+
         # classified attribute
         datwriter.writerow(['@attribute quality {good', 'bad}'])
         datwriter.writerow([])
 
         # data header
         datwriter.writerow(['@data'])
-        
+
         # data generator
         for row in range(500):
             a = [random.choice([0,1]) for i in range(1000)]
@@ -56,16 +56,16 @@ def q2_gen():
         for n in range(att_n - 1):
             s = "@attribute 'a%d' numeric" %(n+1)
             # datwriter.writerow(["@attribute 'a%d' numeric"]) %n
-            datwriter.writerow([s]) 
+            datwriter.writerow([s])
             n += 1
-        
+
         # classified attribute
         datwriter.writerow(['@attribute quality {good', 'bad}'])
         datwriter.writerow([])
 
         # data header
         datwriter.writerow(['@data'])
-        
+
         # data generator
         for row in range(ex_n/2):
             a = [random.choice([0,1]) for i in range(att_n)]
@@ -93,7 +93,6 @@ def arff_conv_data(name):
                         datwriter.writerow(row)
 
 def main():
-    # q2_gen()
-    arff_conv_data('q1')
+    arff_conv_data('q2_4')
 if __name__=='__main__':
     main()
