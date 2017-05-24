@@ -42,9 +42,9 @@ def q1_gen():
             datwriter.writerow(b)
 
 def q2_gen():
-    ex_n = 10 #Even number
-    att_n = 150 #150 abs_diff = 40%
-    with open('q2_3.arff', 'wb') as csvfile:
+    ex_n = 1000 #Even number
+    att_n = 20 #150 abs_diff = 40%
+    with open('q2_1.arff', 'wb') as csvfile:
         datwriter = csv.writer(csvfile, delimiter=',',
                                 quoting=csv.QUOTE_MINIMAL)
 
@@ -60,26 +60,66 @@ def q2_gen():
             n += 1
 
         # classified attribute
-        datwriter.writerow(['@attribute quality {good', 'bad}'])
+        datwriter.writerow(['@attribute quality {a', 'b', 'c', 'd', 'e', 'f}'])
         datwriter.writerow([])
 
         # data header
         datwriter.writerow(['@data'])
 
         # data generator
-        for row in range(ex_n/2):
-            a = [random.choice([0,1]) for i in range(att_n)]
-            # a[0] = 1
+        for index,row in enumerate(range(ex_n)):
+            a = [random.choice([0,1,2,3,4,5]) for i in range(att_n)]
+            # if index < 250:
+            #     a[0] = 0
+            #     a[1] = 0
+            #     a[2] = 0
+            # elif index < 500:
+            #     a[0] = 0
+            #     a[1] = 1
+            #     a[2] = 1
+            # elif index < 750:
+            #     a[0] = 1
+            #     a[1] = 0
+            #     a[2] = 1
+            # else:
+            #     a[0] = 1
+            #     a[1] = 1
+            #     a[2] = 0
             # a[54] = 0
-            a[att_n - 1] = 'good'
+            if index < 20:
+                print a[0] + a[1]
+            if a[0] + a[1] >= 7:
+                a[att_n - 1] = 'a'
+            elif a[0] + a[1] >= 6:
+                a[att_n - 1] = 'b'
+            elif a[0] + a[1] >= 5:
+                a[att_n - 1] = 'c'
+            elif a[0] + a[1] >= 4:
+                a[att_n - 1] = 'd'
+            elif a[0] + a[1] >= 3:
+                a[att_n - 1] = 'e'
+            else:
+                a[att_n - 1] = 'f'
             datwriter.writerow(a)
-        for row in range(ex_n/2):
-            b = [random.choice([0,1]) for i in range(att_n)]
-            # b[0] = 0
-            # b[37] = 1
-            # b[98] = 0
-            b[att_n - 1] = 'bad'
-            datwriter.writerow(b)
+        # for index,row in enumerate(range(ex_n/2)):
+        #     b = [random.choice([0,1]) for i in range(att_n)]
+        #     if index < 20:
+        #         b[0] = 0
+        #         b[1] = 1
+        #         b[2] = 0
+        #     elif index < 40:
+        #         b[0] = 1
+        #         b[1] = 1
+        #         b[2] = 1
+        #     else:
+        #         b[0] = 1
+        #         b[1] = 0
+        #         b[2] = 0
+        #     # b[0] = 0
+        #     # b[37] = 1
+        #     # b[98] = 0
+        #     b[att_n - 1] = 'bad'
+        #     datwriter.writerow(b)
 
 def arff_conv_data(name):
     with open(name + '.data', 'wb') as csv_write:
@@ -93,6 +133,7 @@ def arff_conv_data(name):
                         datwriter.writerow(row)
 
 def main():
-    arff_conv_data('q2_4')
+    q2_gen()
+    arff_conv_data('q2_1')
 if __name__=='__main__':
     main()
